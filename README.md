@@ -72,3 +72,10 @@ En [main.py](https://github.com/josgarcam/anomaly_detection/blob/main/main.py) s
 
 Los puntos corresponden con las observaciones del conjunto de entrenamiento, mientras que las X son las dos extras que se quieren predecir. El color verde indica que el modelo considera que es inlier y el rojo que es outlier.
 
+## Efecto del parámetro de entrada contaminación
+A cada muestra del conjunto de datos se le asigna un valor de anormalidad cuando el modelo es entrenado. Este valor se puede consultar con el atributo *decision_scores_*. Luego, haciendo uso del parámetro de contaminación, que debe estar en el intervalo (0, 0.5], el algoritmo establece un umbral que separa el porcentaje del total de muetras indicado por la contaminación con mayor valor de anormalidad con el objetivo de marcarlas como anomalías.
+
+![Figure_2](https://user-images.githubusercontent.com/80322524/118446984-8550bf80-b6f0-11eb-8271-dab17c32bbdb.png)
+
+En la figura anterior, cada barra representa una muestra del conjunto de entrenamiento y la altura de estas indica el nivel de anormalidad. La barra horizontal marca el umbral calculado que indica el límite de anormalidad a partir del cual las muestras se consideran anomalías. Para generar la gráfica, el parámetro contaminación se ha ajustado al mínimo valor posible y, por ello, solo una barra supera el umbral. Si se incrementa el parámetro, la altura de las barras permanecería igual, pero el umbral descendería hasta situarse por debajo del porcentaje especificado de muestras. 
+
